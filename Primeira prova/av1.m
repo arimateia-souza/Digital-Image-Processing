@@ -11,9 +11,25 @@ tads = imread('C:\Users\arisa\OneDrive\Documentos\pdi\Primeira prova/tads_1.png'
 text = imread('C:\Users\arisa\OneDrive\Documentos\pdi\Primeira prova/text_1.png');
 animal = imread('C:\Users\arisa\OneDrive\Documentos\pdi\Primeira prova/animal_1.png');
 
+
+land2 = land;
 imSaida = mask;
 macaco = rgb2gray(animal);
-#Pintar partes de amarelo
+
+
+for i = 1: size(land,1)
+  for j = 1: size(land,2)
+    if j > 262 &&  j <= 268 || j > 282 &&  j <= 286 || j > 292 &&  j <= 298 || j > 302 &&  j <= 346
+    land(i,j,:) = 0;
+
+    endif
+  endfor
+endfor
+
+
+
+
+#Parcorre toda a mascara e faz as alteraçãos
 for i = 1: size(mask,1)
   for j = 1: size(mask,2)
     if mask(i,j,1) == 127 && mask(i,j,2) == 127 && mask(i,j,3) == 127
@@ -22,18 +38,22 @@ for i = 1: size(mask,1)
       imSaida(i,j,3) = 0;
     endif
      if mask(i,j,:) == 60
-      imSaida(i,j,:) = macaco(i,j,:);
+      imSaida(i,j,:) = macaco(j,i,:);
     endif
     if mask(i,j,:) == 0
-      land(i,j,:) = land(i,j,:) + 70;
-      imSaida(i,j,:) = land(i,j,:);
+      land2(i,j,:) = land2(i,j,:) + 70;
+      imSaida(i,j,:) = land2(i,j,:);
     endif
     if mask(i,j,:) == 255
       land(i,j,:) = land(i,j,:);
       imSaida(i,j,:) = land(i,j,:);
     endif
+
     endfor
 endfor
+
+
+
 
 # Letras tads fica branca e recebe text
 for i = 1: size(tads,1)
@@ -65,12 +85,8 @@ endfor
 figure;
 imshow(imSaida);
 
-figure;
-imshow(tads);
 
 
-figure;
-imshow(tadscopida);
 
 
 
