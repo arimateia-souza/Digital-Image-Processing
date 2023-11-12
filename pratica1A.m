@@ -25,6 +25,6 @@ endfor
 
 figure;
 imshow(m2);
-#Salvar a imagem (Passa a imagem que quer salvar, depois o local\nomeNovo.extensao)
+###Salvar a imagem (Passa a imagem que quer salvar, depois o local\nomeNovo.extensao)###
 #imwrite(m2, 'C:\Users\arisa\OneDrive\Documentos\pdi\imwrite\circulo2.png');
 
