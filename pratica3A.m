@@ -27,14 +27,45 @@ figure('name', "Imagem Binária");
 imshow(imBinaria);
 
 # BINARIZAÇÃO COM ENTRADA
-limiar = input('Digite o limiar: ');
+#limiar = input('Digite o limiar: ');
+#for i = 1 : size(im,1)
+#  for j = 1 : size(im, 2)
+#    imBinaria2(i,j) = im(i,j) < limiar;
+#  end
+#end
+#figure('name', "Imagem Binária com limiar do usuário");
+#imshow(imBinaria2);
+imInvertida = im;
+# IMAGEM NEGATIVA
 for i = 1 : size(im,1)
   for j = 1 : size(im, 2)
-    imBinaria2(i,j) = im(i,j) < limiar;
+    imInvertida(i,j) = 255 - im(i,j);
   end
 end
-figure('name', "Imagem Binária com limiar do usuário");
-imshow(imBinaria2);
+figure('name', "Imagem Invertida");
+imshow(imInvertida);
+
+# TRANFORMAÇÃO DE INTENSIDADE
+imNova = imInvertida;
+potencia = 1.3;
+for i = 1 : size(im,1)
+  for j = 1 : size(im, 2)
+    if(!imBinaria(i,j))
+      imNova(i,j) = uint8(double(imInvertida(i,j))^potencia);
+    end
+  end
+end
+figure('name', "Imagem Final");
+imshow(imNova);
+
+
+
+
+
+
+
+
+
 
 
 
