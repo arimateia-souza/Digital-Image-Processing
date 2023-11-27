@@ -25,6 +25,15 @@ for i = 1:size(imObj,1)
 end
 figure('name', "Negativo");
 imshow(imObj);
+######ROTAÇÃO######
+im_mk = imMask;
+for i = 1:size(imObj,1)
+    for j = 1:size(imObj,2)
+       im_mk(i,size(im_mk,2) + 1 - j) = im_mk(j,i);
+    end
+end
+figure('name', "Rotação da mascara");
+imshow(im_mk);
 ######OPERAÇÃO ARITMETICA######
 for i = 1:size(imObj,1)
     for j = 1:size(imObj,2)
@@ -35,6 +44,10 @@ for i = 1:size(imObj,1)
 end
 figure('name', "Soma");
 imshow(imObj);
+
+
+
+
 
 
 
