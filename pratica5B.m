@@ -25,8 +25,8 @@ for i=1: size(im,1)
   endfor
 endfor
 
-figure('name', "Imagem im2");
+figure('name', "Mascara");
 imshow(imMask);
-figure('name', "Histograma");
+figure('name', "Saida");
 imshow(imSaida);
 #imhist(im(:,:,3));
